@@ -52,13 +52,14 @@ Proyek ini merupakan aplikasi manajemen perpustakaan berbasis web yang dibuat me
    npm install
    ```
 
-4. Jalankan Tailwind CLI untuk memantau perubahan CSS:
+4. Jalankan proyek:
 
-   ```bash
-   npm run watch
-   ```
+- Pastikan server lokal kamu (XAMPP/Laragon/dll.) sudah berjalan.
+- Jalankan proyek dengan perintah berikut untuk memantau perubahan Tailwind CSS dan BrowserSync secara bersamaan:
 
-5. Jalankan proyek menggunakan server lokal (XAMPP/Laragon/dll) dan arahkan ke `http://localhost/LibriZone`.
+```bash
+npm run start
+```
 
 ## Catatan
 

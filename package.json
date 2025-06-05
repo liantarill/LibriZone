@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/style.css --watch",
-    "watch": "npx concurrently \"npm:dev\" \"npm:serve\"",
-    "serve": "browser-sync start --proxy librizone.test --files 'views/**/*.php, public/**/*.css, public/**/*.js'"
+    "bs": "browser-sync start --proxy \"http://localhost/librizone\" --files \"./views/**/*.php\"",
+    "start": "concurrently \"npm run dev\" \"npm run bs\""
   },
   "repository": {
     "type": "git",
