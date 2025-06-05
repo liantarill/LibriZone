@@ -1,60 +1,66 @@
-## Tutorial Clone Proyek
+# LibriZone
 
-### 1. **Clone Repository dari GitHub**
+**Manajemen Perpustakaan Sederhana**
+Proyek ini merupakan aplikasi manajemen perpustakaan berbasis web yang dibuat menggunakan **PHP Native**, **MySQL**, dan **Tailwind CSS (CLI)**.
 
-Buka terminal atau CMD, lalu jalankan:
+## Repository
 
-```bash
-git clone https://github.com/liantarill/LibriZone.git
-cd LibriZone
-```
+[GitHub - LibriZone](https://github.com/liantarill/LibriZone.git)
 
-> Pastikan kamu sudah menginstall Git. Kalau belum, download dari [git-scm.com](https://git-scm.com/).
+## Teknologi yang Digunakan
 
----
+- **PHP Native** – Backend logic
+- **MySQL** – Database
+- **Tailwind CSS (CLI)** – Styling UI
+- **Node.js + NPM** – Untuk menjalankan Tailwind CLI
 
-### 2. **Pasang Dependensi Tailwind CSS**
+## Fitur Utama
 
-Jalankan perintah berikut untuk menginstal semua dependensi:
+- Manajemen data buku
+- Peminjaman dan pengembalian buku
+- Manajemen anggota
+- Dashboard admin
 
-```bash
-npm install
-```
+## Struktur Database
 
----
+**Nama database:** `librizone`
+**File impor:** `sql/table_librizone.sql`
 
-> Pastikan kamu sudah menginstall [Node.js](https://nodejs.org/en/) terlebih dahulu.
+### Cara Mengimpor:
 
-### 3. **Jalankan Tailwind agar CSS Terupdate Otomatis**
+1. Buka phpMyAdmin.
+2. Buat database baru dengan nama `librizone`.
+3. Impor file `sql/table_librizone.sql` yang ada di dalam repositori.
 
-Agar Tailwind meng-compile otomatis setiap kamu menyimpan file:
+## Cara Menjalankan Proyek
 
-```bash
-npm run dev
-```
+1. Clone repository:
 
----
-
-### 4. **Buat Database `librizone`**
-
-1. Buka **phpMyAdmin** atau tools database lainnya.
-2. Buat database baru dengan nama: `librizone`
-3. Import struktur dan data tabel dari file berikut:
-
-   ```
-   sql/table_librizone.sql
+   ```bash
+   git clone https://github.com/liantarill/LibriZone.git
    ```
 
-   > Di phpMyAdmin: Pilih database `librizone` → tab **Import** → pilih file `table_librizone.sql` → klik **Go**.
+2. Masuk ke folder proyek:
 
----
+   ```bash
+   cd LibriZone
+   ```
 
-### 5. **Akses Proyek via Browser**
+3. Install dependensi Tailwind CSS via NPM:
 
-Buka browser dan akses:
+   ```bash
+   npm install
+   ```
 
-```
-http://localhost/librizone/views/dashboard/index.php
-```
+4. Jalankan Tailwind CLI untuk memantau perubahan CSS:
 
-> ✅ _Pastikan kamu sudah menjalankan **XAMPP / Laragon / Apache** dan meletakkan folder `LibriZone` di dalam direktori `htdocs` (untuk XAMPP) atau `www` (untuk Laragon)._
+   ```bash
+   npm run watch
+   ```
+
+5. Jalankan proyek menggunakan server lokal (XAMPP/Laragon/dll) dan arahkan ke `http://localhost/LibriZone`.
+
+## Catatan
+
+- Pastikan PHP dan MySQL sudah aktif.
+- Tailwind CLI membutuhkan Node.js & NPM terinstal di sistem Anda.
