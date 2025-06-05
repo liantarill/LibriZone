@@ -54,12 +54,13 @@ Proyek ini merupakan aplikasi manajemen perpustakaan berbasis web yang dibuat me
 
 4. Jalankan proyek:
 
-- Pastikan server lokal kamu (XAMPP/Laragon/dll.) sudah berjalan.
-- Jalankan proyek dengan perintah berikut untuk memantau perubahan Tailwind CSS dan BrowserSync secara bersamaan:
+   - Pastikan server lokal kamu (XAMPP/Laragon/dll.) sudah berjalan.
 
-```bash
-npm run start
-```
+   - Jalankan proyek dengan perintah berikut untuk memantau perubahan Tailwind CSS dan BrowserSync secara bersamaan:
+
+   ```bash
+   npm run start
+   ```
 
 ## Catatan
 
