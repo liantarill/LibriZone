@@ -21,10 +21,10 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 
 </head>
 
-<body>
+<body class="font-poppins">
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
-            <h1 class="text-2xl font-bold text-center text-primary mb-6">Login LibriZone</h1>
+            <h1 class="text-2xl font-bold text-center text-primary mb-6">LibriZone</h1>
 
             <?php if (isset($_GET['error'])): ?>
                 <div class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded flex items-center space-x-2">
@@ -38,18 +38,19 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
             <form method="POST" action="../../middlewares/auth.php" class="space-y-4">
                 <div>
                     <label class="block text-gray-700 font-semibold mb-1">Username</label>
-                    <input type="text" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300" required>
+                    <input type="text" name="username" class="w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-primary-300" required>
                 </div>
 
                 <div>
                     <label class="block text-gray-700 font-semibold mb-1">Password</label>
-                    <input type="password" name="password" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300" required>
+                    <input type="password" name="password" class="w-full px-3 py-2 border rounded-lg focus:outline-none  focus:border-primary-300" required>
                 </div>
 
-                <button type="submit" name="login" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-                    Login
+                <button type="submit" name="login" class="w-full font-bold bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition duration-200">
+                    LOGIN
                 </button>
             </form>
+
         </div>
     </div>
 

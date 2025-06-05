@@ -23,9 +23,11 @@
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "concurrently": "^9.1.2",
+    "postcss-import": "^16.1.0",
     "tailwindcss": "^3.4.17"
   },
   "dependencies": {
+    "@fontsource/poppins": "^5.2.6",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4"
   }
