@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    header("Location: ../dashboard/index.php");
+    exit();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +21,29 @@
 </head>
 
 <body>
-    <h1>Login LibriZone</h1>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-lg-4 card p-4">
+            <h1 class="text-center">Login LibriZone</h1>
+            <?php if (isset($_GET['error'])): ?>
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Access Ditolak!</strong> Username atau Password Salah.
+                </div>
+            <?php endif; ?>
+
+            <form method="POST" action="../../middlewares/auth.php">
+                <label>Username:</label><br>
+                <input type="text" name="username"><br><br>
+
+                <label>Password:</label><br>
+                <input type="password" name="password"><br><br>
+
+                <button type="submit" name="login">Login</button>
+
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
