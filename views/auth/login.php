@@ -21,8 +21,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 
 </head>
 
-<body class="font-poppins">
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="font-poppins bg-library ">
+    <div class="flex items-center justify-center min-h-screen ">
         <div class="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
             <h1 class="text-2xl font-bold text-center text-primary mb-6">LibriZone</h1>
 

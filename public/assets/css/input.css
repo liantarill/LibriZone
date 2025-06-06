@@ -3,3 +3,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-library {
+  @apply relative bg-black;
+}
+
+.bg-library::before {
+  content: "";
+  @apply absolute inset-0 bg-center bg-no-repeat bg-cover bg-fixed;
+  background-image: url("../images/bg.png");
+  opacity: 0.15;
+  z-index: -1;
+}
+
+body {
+  @apply font-poppins bg-gray-50 overflow-y-scroll;
+}
