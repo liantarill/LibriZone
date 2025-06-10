@@ -23,6 +23,7 @@ CREATE TABLE buku (
     penerbit VARCHAR(100),
     tahun_terbit YEAR,
     id_kategori INT,
+    jumlah INT NOT NULL DEFAULT 0;
     status ENUM('tersedia', 'dipinjam') DEFAULT 'tersedia',
     FOREIGN KEY (id_kategori) REFERENCES kategori(id)
 );
@@ -38,3 +39,6 @@ CREATE TABLE peminjaman (
     FOREIGN KEY (id_anggota) REFERENCES anggota(id),
     FOREIGN KEY (id_buku) REFERENCES buku(id)
 );
+
+
+INSERT INTO `admin`(`username`, `password`) VALUES ('admin','$2y$12$FhK1.TJTeap/UnsxDgMN8.0eVD70DNvSkQiawb74X123h4v9iIHOy')

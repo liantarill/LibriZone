@@ -48,16 +48,15 @@ $resultPeminjaman = mysqli_query($conn, $queryPeminjaman);
 
 <body>
     <?php include '../layouts/navbar.php' ?>
-    <div class="container mx-auto my-12 px-4">
-        <h1 class="text-2xl mt-6 mb-4">Hello this is dashboard</h1>
-
-        <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary-600 transition-colors">
-            + Transaksi Baru
-        </button>
-
-        <a href="../auth/logout.php" class="ml-4 inline-block px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50 transition">
-            Log out
-        </a>
+    <div class="container mx-auto my-16 px-4">
+        <header class="flex justify-between items-center mb-2">
+            <h1 class="items-center text-3xl font-bold text-primary ">
+                Selamat Datang di LibriZone
+            </h1>
+            <a href="../peminjaman/add.php" class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary-600 transition-colors">
+                + Tambah Peminjaman
+            </a>
+        </header>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
             <div class="bg-white shadow p-4 rounded">
@@ -111,10 +110,10 @@ $resultPeminjaman = mysqli_query($conn, $queryPeminjaman);
                     <div class="flex items-center space-x-3">
                         <div class="relative">
                             <input type="text" placeholder="Cari..."
-                                class="pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                                class="pl-9 pr-4 py-2 border border-gray-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                         </div>
-                        <button class="text-primary text-sm font-medium">Lihat Semua</button>
+                        <a href="../peminjaman/index.php" class="text-primary text-sm font-medium">Lihat Semua</a>
                     </div>
                 </div>
 
@@ -167,19 +166,19 @@ $resultPeminjaman = mysqli_query($conn, $queryPeminjaman);
             <div class="shadow p-6">
                 <h3 class="font-bold mb-4 text-gray-500">Aksi Cepat</h3>
                 <div class="flex flex-col gap-y-3">
-                    <button class="border border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
+                    <a href="../buku/add.php" class="border text-center border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
                         <i class="fa-solid fa-book"></i>
                         Tambah buku
-                    </button>
-                    <button class="border border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
+                    </a>
+                    <a href="../anggota/add.php" class="border text-center border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
                         <i class="fa-solid fa-user-plus"></i>
                         Tambah anggota
-                    </button>
-                    <button class="border border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
+                    </a>
+                    <a href="../peminjaman/add.php" class="border text-center border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
                         <i class="fa-solid fa-arrow-right-arrow-left"></i>
                         Catat peminjaman
-                    </button>
-                    <button class="border border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
+                    </a>
+                    <button class="border text-center border-primary rounded text-primary hover:text-white hover:bg-primary transition duration-200 text-sm w-full py-2">
                         <i class="fa-solid fa-hands-bound"></i>
                         Catat pengembalian
                     </button>
