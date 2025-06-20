@@ -1,7 +1,7 @@
 <?php
 
 include '../../middlewares/auth.php';
-
+requireLogin();
 $queryBuku =    "SELECT buku.*, kategori.nama_kategori 
                 FROM buku 
                 JOIN kategori ON buku.id_kategori = kategori.id";

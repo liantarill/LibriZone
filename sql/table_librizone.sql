@@ -23,9 +23,8 @@ CREATE TABLE buku (
     penerbit VARCHAR(100),
     tahun_terbit YEAR,
     id_kategori INT,
-    jumlah INT NOT NULL DEFAULT 0;
+    jumlah INT NOT NULL DEFAULT 0,
     status ENUM('tersedia', 'dipinjam') DEFAULT 'tersedia',
-    FOREIGN KEY (id_kategori) REFERENCES kategori(id)
 );
 
 
@@ -36,8 +35,6 @@ CREATE TABLE peminjaman (
     tanggal_pinjam DATE,
     tanggal_kembali DATE,
     status_pengembalian ENUM('belum', 'sudah') DEFAULT 'belum',
-    FOREIGN KEY (id_anggota) REFERENCES anggota(id),
-    FOREIGN KEY (id_buku) REFERENCES buku(id)
 );
 
 

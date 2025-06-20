@@ -1,8 +1,7 @@
 <?php
 include '../../middlewares/auth.php';
-include 'detail.php';
 include 'edit.php';
-
+// requireLogin();
 $query = "SELECT * FROM anggota";
 $result = mysqli_query($conn, $query);
 
@@ -58,14 +57,17 @@ if (isset($_POST['update'])) {
     <?php include '../layouts/navbar.php' ?>
 
     <div class="container mx-auto my-16 px-4">
-        <h1 class="text-2xl mt-6 mb-4">Hello this is all memberrr</h1>
-        <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary-600 transition-colors">
-            + Tambah Anggota
-        </button>
 
-        <a href="../auth/logout.php" class="ml-4 inline-block px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50 transition">
-            Log out
-        </a>
+        <header class="flex justify-between items-center mb-2">
+            <h1 class="items-center text-3xl font-bold text-primary ">
+                <i class="fa-solid fa-users"></i>
+
+                Manajemen Anggota
+            </h1>
+            <a href="add.php" class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary-600 transition-colors">
+                + Tambah Anggota
+            </a>
+        </header>
 
         <?php if (isset($_GET['status']) && $_GET['status'] == 'updated'): ?>
             <div class="bg-green-100 mt-2 text-green-800 p-4 rounded">Data berhasil diupdate.</div>
@@ -90,54 +92,46 @@ if (isset($_POST['update'])) {
                     <thead class="bg-gray-100 ">
                         <th class="px-2 py-2">ID</th>
                         <th class="px-2 py-2">NAMA</th>
-                        <th class="px-2 py-2">AKSI</th>
+                        <th class="px-2 py-2">ALAMAT</th>
+                        <th class="px-2 py-2">NO. TELP</th>
+                        <th class="text-center px-2 py-2">AKSI</th>
 
                     </thead>
                     <tbody>
-                        <?php
-                        while ($user = mysqli_fetch_assoc($result)) {
-                            $popupId = "popupDelete_" . $user['id'];
-
-                            echo "<tr class='hover:bg-gray-50 border-b'>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($user['id']) . "</td>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($user['nama']) . "</td>";
-
-                            echo "<td class='px-2  py-2'>";
-                            echo '<div class="flex gap-2">
-        <button onclick="openDetail(' .
-                                "'" . $user['id'] . "', " .
-                                "'" . $user['nama'] . "', " .
-                                "'" . $user['alamat'] . "', " .
-                                "'" . $user['no_hp'] . "'" .
-                                ')" class="bg-blue-400 font-semibold text-white py-2 px-4 rounded shadow">
-        <i class="fa-solid fa-eye"></i> Detail</button>
-
-        <button onclick="openEdit(' .
-                                "'" . $user['id'] . "', " .
-                                "'" . $user['nama'] . "', " .
-                                "'" . $user['alamat'] . "', " .
-                                "'" . $user['no_hp'] . "'" .
-                                ')" class="bg-orange-400 font-semibold text-white py-2 px-4 rounded shadow">
-                    <i class="fa-solid fa-pen-to-square"></i> Edit</button>
-
-                    <button popovertarget="' . $popupId . '" class="bg-red-400 font-semibold text-white py-2 px-4 rounded shadow">
-                    <i class="fa-solid fa-trash"></i> Delete</button>
-                    </div>';
-                            echo "</td>";
-                            echo "</tr>";
-
-                            echo '<div class="bg-yellow-200 rounded-md p-4 shadow text-center" id="' . $popupId . '" popover>
-                                    <span class="">Apakah anda yakin untuk menghapus: ' . htmlspecialchars($user['nama']) . '?</span>
-                                    <div class="flex justify-center mt-2 gap-4">
-                                        <a href="" popovertargetaction="hide" class="bg-green-500 px-5 text-white font-medium rounded">Batal</a>
-                                        <a href="delete.php?id=' . urlencode($user['id']) . '" class="bg-red-400 px-5 text-white font-medium rounded">Hapus</a>
+                        <?php while ($user = mysqli_fetch_assoc($result)): ?>
+                            <?php $popupId = "popupDelete_" . $user['id']; ?>
+                            <tr class="hover:bg-gray-50 border-b">
+                                <td class="px-2 py-2"><?= htmlspecialchars($user['id']) ?></td>
+                                <td class="px-2 py-2"><?= htmlspecialchars($user['nama']) ?></td>
+                                <td class="px-2 py-2"><?= htmlspecialchars($user['alamat']) ?></td>
+                                <td class="px-2 py-2"><?= htmlspecialchars($user['no_hp']) ?></td>
+                                <td class="px-2 py-2">
+                                    <div class="flex gap-2 justify-center">
+                                        <a href="detail.php?id=<?= urlencode($user['id']) ?>" class="bg-blue-400 font-semibold text-white py-2 px-4 rounded shadow">
+                                            <i class="fa-solid fa-eye"></i> Detail
+                                        </a>
+                                        <button onclick="openEdit('<?= $user['id'] ?>', '<?= $user['nama'] ?>', '<?= $user['alamat'] ?>', '<?= $user['no_hp'] ?>')" class="bg-orange-400 font-semibold text-white py-2 px-4 rounded shadow">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </button>
+                                        <button popovertarget="<?= $popupId ?>" class="bg-red-400 font-semibold text-white py-2 px-4 rounded shadow">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </button>
                                     </div>
-                                </div>';
-                        }
-                        ?>
+                                </td>
+                            </tr>
+
+                            <div class="bg-red-500   rounded-md p-4 shadow text-center" id="<?= $popupId ?>" popover>
+                                <span class="text-white font-semibold">Apakah anda yakin ingin menghapus: <?= htmlspecialchars($user['nama']) ?>?</span>
+                                <div class="flex justify-center mt-14 gap-4">
+                                    <a href="" popovertargetaction="hide" class="bg-gray-200 text-gray-800 px-5 font-medium rounded hover:bg-slate-400">Batal</a>
+                                    <a href="delete.php?id=<?= urlencode($user['id']) ?>" class="bg-red-700 text-white px-5 font-medium rounded hover:bg-red-800">Hapus</a>
+                                </div>
+                            </div>
+
+
+
+                        <?php endwhile; ?>
                     </tbody>
-
-
                 </table>
 
             </div>
@@ -146,13 +140,13 @@ if (isset($_POST['update'])) {
 
     </div>
     <script>
-        function openDetail(id, nama, alamat, no_hp) {
-            document.getElementById('id').innerHTML = id;
-            document.getElementById('nama').innerHTML = nama;
-            document.getElementById('alamat').innerHTML = alamat;
-            document.getElementById('no_hp').innerHTML = no_hp;
-            document.getElementById('detailModal').classList.remove('hidden');
-        }
+        // function openDetail(id, nama, alamat, no_hp) {
+        //     document.getElementById('id').innerHTML = id;
+        //     document.getElementById('nama').innerHTML = nama;
+        //     document.getElementById('alamat').innerHTML = alamat;
+        //     document.getElementById('no_hp').innerHTML = no_hp;
+        //     document.getElementById('detailModal').classList.remove('hidden');
+        // }
 
         function openEdit(id, nama, alamat, no_hp) {
             document.getElementById('editId').value = id;

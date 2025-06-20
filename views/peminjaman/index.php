@@ -81,31 +81,34 @@ $resultPeminjaman = mysqli_query($conn, $queryPeminjaman);
 
                     </thead>
                     <tbody>
-                        <?php
-                        while ($peminjaman = mysqli_fetch_assoc($resultPeminjaman)) {
-                            echo "<tr class='hover:bg-gray-50'>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($peminjaman['id']) . "</td>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($peminjaman['nama_anggota']) . "</td>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($peminjaman['nama_buku']) . "</td>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars($peminjaman['tanggal_pinjam']) . "</td>";
-                            echo "<td class='px-2 py-2'>" . htmlspecialchars(($peminjaman['tanggal_kembali'])) . "</td>";
-                            if ($peminjaman['status_pengembalian'] === 'sudah') {
-                                echo "<td class='px-2 py-2 flex justify-center'>
-                                            <span class='inline-flex px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full'>Dikembalikan</span>
-                                        </td>";
-                            } else {
-                                echo "<td class='px-2 py-2 flex justify-center'>
-                                            <span class='inline-flex px-2 py-1 text-xs font-medium bg-orange-200 text-orange-700 rounded-full'>Dipinjam</span>
-                                        </td>";
-                            }
-                            echo "<td class='px-2 py-2'>";
+                        <?php while ($peminjaman = mysqli_fetch_assoc($resultPeminjaman)) : ?>
+                            <tr class='hover:bg-gray-50'>
+                                <td class='px-2 py-2'><?= htmlspecialchars($peminjaman['id']) ?></td>
+                                <td class='px-2 py-2'><?= htmlspecialchars($peminjaman['nama_anggota']) ?></td>
+                                <td class='px-2 py-2'><?= htmlspecialchars($peminjaman['nama_buku']) ?></td>
+                                <td class='px-2 py-2'><?= htmlspecialchars($peminjaman['tanggal_pinjam']) ?></td>
+                                <td class='px-2 py-2'><?= htmlspecialchars($peminjaman['tanggal_kembali']) ?></td>
 
-                            echo '<a href="edit.php?id=' . urlencode($peminjaman['id']) . '" class="text-blue-600 hover:underline">Edit</a>  ';
-                            echo '<a href="delete.php?id=' . urlencode($peminjaman['id']) . '" onclick="return confirm(\'Yakin hapus?\')" class="text-red-600 hover:underline">Delete</a>';
-                            echo "</td>";
-                            echo "</tr>";
-                        }
-                        ?>
+                                <?php if ($peminjaman['status_pengembalian'] === 'sudah') : ?>
+                                    <td class='px-2 py-2 flex justify-center'>
+                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                            <i class="fas fa-check-circle mr-1"></i>Dikembalikan
+                                        </span>
+                                    </td>
+                                <?php else : ?>
+                                    <td class='px-2 py-2 flex justify-center'>
+                                        <span class='px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800'>
+                                            <i class='fas fa-clock mr-1'></i>Dipinjam
+                                        </span>
+                                    </td>
+                                <?php endif; ?>
+
+                                <td class='px-2 py-2'>
+                                    <a href="edit.php?id=<?= urlencode($peminjaman['id']) ?>" class="text-blue-600 hover:underline">Edit</a>
+                                    <a href="delete.php?id=<?= urlencode($peminjaman['id']) ?>" onclick="return confirm('Yakin hapus?')" class="text-red-600 hover:underline ml-2">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
 
                 </table>

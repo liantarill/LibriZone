@@ -17,6 +17,13 @@ $resultDipinjam = mysqli_query($conn, $queryDipinjam);
 $totalDipinjam = mysqli_num_rows($resultDipinjam);
 
 
+$query = "SELECT COUNT(*) AS total FROM peminjaman";
+$result = mysqli_query($conn, $query);
+$data = mysqli_fetch_assoc($result);
+$totalPeminjaman = $data['total'];
+
+
+
 $queryPeminjaman = "SELECT peminjaman.*, 
                     buku.judul AS nama_buku, 
                     anggota.nama AS nama_anggota
@@ -91,12 +98,12 @@ $resultPeminjaman = mysqli_query($conn, $queryPeminjaman);
 
             <div class="bg-white shadow p-4 rounded">
                 <div class="flex justify-between items-center mb-2">
-                    <h6 class="text-gray-500 text-sm">Total Buku</h6>
+                    <h6 class="text-gray-500 text-sm">Total Peminjaman</h6>
                     <div class="text-primary flex items-center justify-center bg-primary-200 rounded-full w-10 h-10  ">
-                        <i class="fa-solid fa-book"></i>
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     </div>
                 </div>
-                <p class="text-2xl font-bold"><?= $totalBuku ?></p>
+                <p class="text-2xl font-bold"><?= $totalPeminjaman ?></p>
             </div>
         </div>
 

@@ -1,5 +1,7 @@
 <?php
 include '../../middlewares/auth.php';
+requireLogin();
+
 $id = $_GET['id'];
 
 // $query = "DELETE FROM anggota WHERE id = '$id'";
