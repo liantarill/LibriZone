@@ -34,7 +34,7 @@ CREATE TABLE peminjaman (
     id_buku INT,
     tanggal_pinjam DATE,
     tanggal_kembali DATE,
-    status_pengembalian ENUM('belum', 'sudah') DEFAULT 'belum',
+    status_pengembalian ENUM('belum', 'sudah') DEFAULT 'belum'
 );
 
 
