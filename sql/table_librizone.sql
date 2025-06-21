@@ -24,7 +24,7 @@ CREATE TABLE buku (
     tahun_terbit YEAR,
     id_kategori INT,
     jumlah INT NOT NULL DEFAULT 0,
-    status ENUM('tersedia', 'dipinjam') DEFAULT 'tersedia',
+    status ENUM('tersedia', 'dipinjam') DEFAULT 'tersedia'
 );
 
 
